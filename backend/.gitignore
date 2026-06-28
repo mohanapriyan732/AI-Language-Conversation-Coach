@@ -1,0 +1,47 @@
+# Environment variables
+.env
+
+
+# Python virtual environment
+venv/
+.venv/
+
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+# Flask
+instance/
+
+
+# Temporary files
+temp/
+tmp/
+uploads/
+
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+# IDE
+.vscode/
+.idea/
+
+
+# Logs
+*.log
+
+
+# Frontend dependencies (if added later)
+node_modules/
+
+
+# Build files
+dist/
+build/

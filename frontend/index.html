@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Language Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="background" aria-hidden="true">
+      <div class="orb orb-one"></div>
+      <div class="orb orb-two"></div>
+      <div class="orb orb-three"></div>
+      <div class="grid-glow"></div>
+    </div>
+
+    <main class="container">
+      <header class="hero-card glass">
+        <div class="hero-content">
+          <div class="hero-copy">
+            <p class="eyebrow">Future-ready conversation coach</p>
+            <h1>Speak fluently with <span>Nancy AI</span></h1>
+            <p>Practice real conversations in a premium, immersive experience designed for effortless learning.</p>
+            <div class="hero-stats">
+              <div class="stat-pill">5 exchanges</div>
+              <div class="stat-pill">Voice-first</div>
+              <div class="stat-pill">Instant feedback</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="illustration-card">
+            <svg viewBox="0 0 260 240" role="img" aria-label="AI teacher illustration">
+              <circle cx="130" cy="110" r="86" fill="rgba(96,165,250,0.12)" />
+              <rect x="72" y="58" width="116" height="86" rx="28" fill="#0f172a" stroke="#60a5fa" stroke-width="3" />
+              <rect x="94" y="82" width="72" height="48" rx="18" fill="#f8fafc" opacity="0.96" />
+              <circle class="eye" cx="112" cy="102" r="5" fill="#0f172a" />
+              <circle class="eye" cx="146" cy="102" r="5" fill="#0f172a" />
+              <rect class="mouth" x="112" y="120" width="34" height="6" rx="3" fill="#2563eb" />
+              <rect x="98" y="142" width="18" height="36" rx="8" fill="#38bdf8" />
+              <rect x="144" y="142" width="18" height="36" rx="8" fill="#8b5cf6" />
+              <rect x="78" y="188" width="104" height="16" rx="8" fill="#1e293b" />
+              <circle cx="200" cy="86" r="18" fill="#06b6d4" opacity="0.75" />
+              <circle cx="204" cy="90" r="8" fill="#f8fafc" opacity="0.8" />
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="progress-card glass">
+        <div class="progress-label">
+          <span>Conversation progress</span>
+          <span id="exchange">0/5</span>
+        </div>
+        <div class="bar">
+          <div id="progress"></div>
+        </div>
+      </div>
+
+      <section class="glass selection-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 1</p>
+            <h2>Select Language</h2>
+          </div>
+          <p class="section-note">Choose the language you want to practice today.</p>
+        </div>
+
+        <div id="languageContainer" class="cards">
+          <button class="choice" data-language="French"><span class="flag-badge" aria-hidden="true">🇫🇷</span><span class="language-name">French</span></button>
+          <button class="choice" data-language="Spanish"><span class="flag-badge" aria-hidden="true">🇪🇸</span><span class="language-name">Spanish</span></button>
+          <button class="choice" data-language="Hindi"><span class="flag-badge" aria-hidden="true">🇮🇳</span><span class="language-name">Hindi</span></button>
+          <button class="choice" data-language="Japanese"><span class="flag-badge" aria-hidden="true">🇯🇵</span><span class="language-name">Japanese</span></button>
+          <button class="choice" data-language="German"><span class="flag-badge" aria-hidden="true">🇩🇪</span><span class="language-name">German</span></button>
+          <button class="choice" data-language="Telugu"><span class="flag-badge" aria-hidden="true">🇮🇳</span><span class="language-name">Telugu</span></button>
+          <button class="choice" data-language="Tamil"><span class="flag-badge" aria-hidden="true">🇮🇳</span><span class="language-name">Tamil</span></button>
+        </div>
+      </section>
+
+      <section id="scenarioSection" class="glass hidden">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Step 2</p>
+            <h2>Choose Scenario</h2>
+          </div>
+          <p class="section-note">Pick a practical conversation setting.</p>
+        </div>
+
+        <div class="cards">
+          <button class="choice scenario"><span class="scenario-icon" aria-hidden="true">🍽️</span><span>Restaurant</span></button>
+          <button class="choice scenario"><span class="scenario-icon" aria-hidden="true">🗺️</span><span>Directions</span></button>
+          <button class="choice scenario"><span class="scenario-icon" aria-hidden="true">💼</span><span>Interview</span></button>
+          <button class="choice scenario"><span class="scenario-icon" aria-hidden="true">🛍️</span><span>Shopping</span></button>
+          <button class="choice scenario"><span class="scenario-icon" aria-hidden="true">🏨</span><span>Hotel</span></button>
+          <button class="choice scenario"><span class="scenario-icon" aria-hidden="true">🩺</span><span>Doctor</span></button>
+        </div>
+      </section>
+
+      <button id="startBtn" class="primary hidden">Start Conversation</button>
+
+      <section class="chat glass">
+        <div class="ai">
+          <div class="avatar" aria-hidden="true">
+            <svg viewBox="0 0 80 80" role="img" aria-label="Nancy AI avatar">
+              <rect x="16" y="18" width="48" height="40" rx="16" fill="#0f172a" stroke="#60a5fa" stroke-width="2" />
+              <rect x="26" y="30" width="28" height="18" rx="9" fill="#f8fafc" />
+              <circle class="eye" cx="34" cy="39" r="3" fill="#0f172a" />
+              <circle class="eye" cx="46" cy="39" r="3" fill="#0f172a" />
+              <rect class="mouth" x="34" y="47" width="12" height="3" rx="1.5" fill="#2563eb" />
+              <rect x="24" y="52" width="8" height="14" rx="4" fill="#38bdf8" />
+              <rect x="48" y="52" width="8" height="14" rx="4" fill="#8b5cf6" />
+            </svg>
+          </div>
+          <div class="ai-meta">
+            <h3>Nancy AI</h3>
+            <p>Your personal language partner</p>
+          </div>
+        </div>
+
+        <div class="chat-shell">
+          <div class="typing-indicator" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <small>AI is thinking…</small>
+          </div>
+          <div id="chatBox">Your conversation will appear here...</div>
+        </div>
+      </section>
+
+      <div class="voice-area">
+        <div class="voice-panel">
+          <div class="voice-visualizer" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <button id="micBtn" class="mic hidden" aria-label="Start speaking"><span class="mic-icon" aria-hidden="true">🎤</span></button>
+          <p class="voice-hint">Tap the mic to speak</p>
+        </div>
+        <button id="submitBtn" class="primary hidden">Send Response</button>
+      </div>
+
+      <section id="feedback" class="glass feedback-panel">
+        <div class="feedback-shell">
+          <div class="feedback-icon" aria-hidden="true">✦</div>
+          <div>
+            <h3>Feedback will appear here</h3>
+            <p>Your conversation insights and progress summary will be shown after the session.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
